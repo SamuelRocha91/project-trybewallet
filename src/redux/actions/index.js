@@ -1,12 +1,18 @@
 export const SAVE_EMAIL = 'SAVE_EMAIL';
 export const SAVE_CURRENCIES = 'SAVE_CURRENCIES';
 export const SAVE_EXPENSES = 'SAVE_EXPENSES';
+export const DELETE_TAG = 'DELETE_TAG';
 
 const URL_BASE = 'https://economia.awesomeapi.com.br/json/all';
 
 export const saveEmail = (email) => ({
   type: SAVE_EMAIL,
   payload: email,
+});
+
+export const actionDelete = (id) => ({
+  type: DELETE_TAG,
+  payload: id,
 });
 
 const saveCurrencies = (currencies) => ({
@@ -26,8 +32,6 @@ export const fetchApiExpenses = (state) => (dispatch) => {
   fetch(URL_BASE)
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
-      console.log(state);
       dispatch(saveExpenses(data, state));
     });
 };

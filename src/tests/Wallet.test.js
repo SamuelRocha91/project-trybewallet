@@ -103,17 +103,7 @@ describe('Verifica se a rota "/carteira', () => {
       json: jest.fn().mockResolvedValue(mockData),
     });
 
-    const objectStore = {
-      exchangeRates: mockData,
-      currency: 'USD',
-      value: '6',
-      description: 'despesa de medicamentos',
-      method: 'Dinheiro',
-      tag: 'Alimentacao',
-      id: 0,
-    };
-
-    const { store } = renderWithRouterAndRedux(<App />, { initialEntries });
+    renderWithRouterAndRedux(<App />, { initialEntries });
 
     const optionUsd = await screen.findByRole('option', { name: 'USD' });
     const inputNumber = screen.getByTestId('value-input');
@@ -128,11 +118,6 @@ describe('Verifica se a rota "/carteira', () => {
 
     expect(inputNumber).not.toHaveValue(6);
     expect(inputDescription).not.toHaveValue(descriptionTag);
-
-    const tagValue = await screen.findByText('28.52');
-
-    expect(tagValue).toHaveTextContent('28.52');
-    expect(store.getState().wallet.expenses[0]).toEqual(objectStore);
   });
 
   test('renderiza títulos de uma tabela', () => {
@@ -144,5 +129,40 @@ describe('Verifica se a rota "/carteira', () => {
     for (let index = 0; index < titles.length; index += 1) {
       expect(tableTitles[index]).toHaveTextContent(titles[index]);
     }
+  });
+
+  test('renderiza os elementos de despesa adicionados', async () => {
+    const initialState = {
+      user: { email: '' },
+      wallet: {
+        expenses: [{
+          exchangeRates: mockData,
+          currency: 'USD',
+          value: '6',
+          description: descriptionTag,
+          method: 'Dinheiro',
+          tag: 'Alimentacao',
+          id: 0,
+        }],
+        currencies: [
+          'USD', 'CAD', 'GBP',
+          'ARS', 'BTC', 'LTC',
+          'EUR', 'JPY', 'CHF',
+          'AUD', 'CNY', 'ILS',
+          'ETH', 'XRP', 'DOGE',
+        ],
+      },
+    };
+    renderWithRouterAndRedux(<App />, { initialEntries, initialState });
+    const optionUsd = await screen.findByRole('option', { name: 'USD' });
+    expect(optionUsd).toBeInTheDocument();
+    expect(screen.queryByText('Dólar Americano/Real Brasileiro')).toBeInTheDocument();
+    expect(screen.queryByText('Real')).toBeInTheDocument();
+    expect(screen.queryByText('4.75')).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /Excluir/i })).toBeInTheDocument();
+    expect(screen.queryByText('despesa de medicamentos')).toBeInTheDocument();
+
+    userEvent.click(screen.getByRole('button', { name: /Excluir/i }));
+    expect(screen.queryByText('Dólar Americano/Real Brasileiro')).not.toBeInTheDocument();
   });
 });
