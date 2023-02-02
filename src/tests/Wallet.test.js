@@ -98,9 +98,10 @@ describe('Verifica se a rota "/carteira', () => {
   });
 
   test('possibilita adicionar uma despesa ao store e se essa alteração modifica o Header', async () => {
-    global.fetch = jest.fn(async () => ({
-      json: async () => mockData,
-    }));
+    jest.spyOn(global, 'fetch');
+    global.fetch.mockResolvedValue({
+      json: jest.fn().mockResolvedValue(mockData),
+    });
 
     const objectStore = {
       exchangeRates: mockData,
@@ -132,5 +133,16 @@ describe('Verifica se a rota "/carteira', () => {
 
     expect(tagValue).toHaveTextContent('28.52');
     expect(store.getState().wallet.expenses[0]).toEqual(objectStore);
+  });
+
+  test('renderiza títulos de uma tabela', () => {
+    global.fetch.mockRestore();
+    const titles = ['Descrição', 'Tag', 'Método de pagamento', 'Valor', 'Moeda', 'Câmbio utilizado', 'Valor convertido', 'Moeda de conversão', 'Editar/Excluir'];
+    renderWithRouterAndRedux(<App />, { initialEntries });
+    const tableTitles = screen.getAllByRole('columnheader');
+
+    for (let index = 0; index < titles.length; index += 1) {
+      expect(tableTitles[index]).toHaveTextContent(titles[index]);
+    }
   });
 });
