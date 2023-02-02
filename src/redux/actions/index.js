@@ -26,6 +26,8 @@ export const fetchApiExpenses = (state) => (dispatch) => {
   fetch(URL_BASE)
     .then((response) => response.json())
     .then((data) => {
+      console.log(data);
+      console.log(state);
       dispatch(saveExpenses(data, state));
     });
 };
