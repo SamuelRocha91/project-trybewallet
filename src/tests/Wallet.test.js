@@ -8,6 +8,30 @@ import mockData from './helpers/mockData';
 describe('Verifica se a rota "/carteira', () => {
   const initialEntries = ['/carteira'];
   const descriptionTag = 'despesa de medicamentos';
+  const editarDespesa = 'Editar despesa';
+  const descriptionInput = 'description-input';
+  const valueInput = 'value-input';
+  const initialState = {
+    user: { email: 'samuel@samuel.com' },
+    wallet: {
+      expenses: [{
+        exchangeRates: mockData,
+        currency: 'USD',
+        value: '6',
+        description: descriptionTag,
+        method: 'Dinheiro',
+        tag: 'Alimentacao',
+        id: 0,
+      }],
+      currencies: [
+        'USD', 'CAD', 'GBP',
+        'ARS', 'BTC', 'LTC',
+        'EUR', 'JPY', 'CHF',
+        'AUD', 'CNY', 'ILS',
+        'ETH', 'XRP', 'DOGE',
+      ],
+    },
+  };
 
   test('renderiza um header com um campo de email, um de despesa e outro de moeda', () => {
     renderWithRouterAndRedux(<App />, { initialEntries });
@@ -26,11 +50,10 @@ describe('Verifica se a rota "/carteira', () => {
   });
 
   test('verifica se quando existe um email salvo na store se ele é renderizado no Header', () => {
-    const initialState = { user: {
-      email: 'samuel@samuel.com',
-    } };
-
-    renderWithRouterAndRedux(<App />, { initialEntries, initialState });
+    renderWithRouterAndRedux(
+      <App />,
+      { initialEntries, initialState },
+    );
 
     const renderEmail = screen.getByTestId('email-field');
 
@@ -38,30 +61,19 @@ describe('Verifica se a rota "/carteira', () => {
   });
 
   test('verifica se quando existe uma despesa salva, se o seu valor é atualizado no Header', () => {
-    const initialState = {
-      wallet: {
-        expenses: [{ exchangeRates: mockData,
-          currency: 'USD',
-          value: '5',
-          description: 'aaaa',
-          method: 'Dinheiro',
-          tag: 'Alimentacao',
-          id: 0 }],
-      },
-    };
     renderWithRouterAndRedux(<App />, { initialEntries, initialState });
 
     const tagTotal = screen.getByTestId('total-field');
 
-    expect(tagTotal).toHaveTextContent('23.77');
+    expect(tagTotal).toHaveTextContent('28.52');
   });
   test('renderiza todos os campos de formulário, o botão e se é possível digitar nos campos', async () => {
     renderWithRouterAndRedux(<App />, { initialEntries });
 
     const optionUsd = await screen.findByRole('option', { name: 'USD' });
     const trybeWallet = screen.getByText(/trybeWallet/i);
-    const inputNumber = screen.getByTestId('value-input');
-    const inputDescription = screen.getByTestId('description-input');
+    const inputNumber = screen.getByTestId(valueInput);
+    const inputDescription = screen.getByTestId(descriptionInput);
     const selectCurrency = screen.getByTestId('currency-input');
     const selectMethod = screen.getByTestId('method-input');
     const selectTag = screen.getByTestId('tag-input');
@@ -106,8 +118,8 @@ describe('Verifica se a rota "/carteira', () => {
     renderWithRouterAndRedux(<App />, { initialEntries });
 
     const optionUsd = await screen.findByRole('option', { name: 'USD' });
-    const inputNumber = screen.getByTestId('value-input');
-    const inputDescription = screen.getByTestId('description-input');
+    const inputNumber = screen.getByTestId(valueInput);
+    const inputDescription = screen.getByTestId(descriptionInput);
     const button = screen.getByRole('button', { name: /adicionar despesa/i });
 
     expect(optionUsd.selected).toBeTruthy();
@@ -132,27 +144,6 @@ describe('Verifica se a rota "/carteira', () => {
   });
 
   test('renderiza os elementos de despesa adicionados', async () => {
-    const initialState = {
-      user: { email: '' },
-      wallet: {
-        expenses: [{
-          exchangeRates: mockData,
-          currency: 'USD',
-          value: '6',
-          description: descriptionTag,
-          method: 'Dinheiro',
-          tag: 'Alimentacao',
-          id: 0,
-        }],
-        currencies: [
-          'USD', 'CAD', 'GBP',
-          'ARS', 'BTC', 'LTC',
-          'EUR', 'JPY', 'CHF',
-          'AUD', 'CNY', 'ILS',
-          'ETH', 'XRP', 'DOGE',
-        ],
-      },
-    };
     renderWithRouterAndRedux(<App />, { initialEntries, initialState });
     const optionUsd = await screen.findByRole('option', { name: 'USD' });
     expect(optionUsd).toBeInTheDocument();
@@ -164,5 +155,51 @@ describe('Verifica se a rota "/carteira', () => {
 
     userEvent.click(screen.getByRole('button', { name: /Excluir/i }));
     expect(screen.queryByText('Dólar Americano/Real Brasileiro')).not.toBeInTheDocument();
+  });
+
+  test('Verifica se é possível editar uma das despesas salvas na carteira', async () => {
+    renderWithRouterAndRedux(<App />, { initialEntries, initialState });
+    const optionUsd = await screen.findByRole('option', { name: 'USD' });
+    const inputDescription = screen.getByTestId(descriptionInput);
+
+    expect(optionUsd).toBeInTheDocument();
+    expect(inputDescription).toHaveValue('');
+    expect(screen.getByText('Real')).toBeInTheDocument();
+    expect(screen.getByText('4.75')).toBeInTheDocument();
+    expect(screen.getByTestId('edit-btn')).toBeInTheDocument();
+    expect(screen.getByText(descriptionTag)).toBeInTheDocument();
+    expect(optionUsd.selected).toBe(true);
+    expect(optionUsd.value).toBe('USD');
+
+    userEvent.click(screen.queryByTestId('edit-btn'));
+
+    expect(screen.getByText(editarDespesa)).toBeInTheDocument();
+
+    const inputNumber = screen.getByTestId('value-input');
+    userEvent.type(inputNumber, '7');
+    userEvent.type(inputDescription, 'sete reais');
+
+    userEvent.click(screen.getByText(editarDespesa));
+
+    expect(inputNumber).not.toHaveValue('7');
+    expect(inputDescription).toHaveValue('');
+    expect(screen.getByText('7.00')).toBeInTheDocument();
+    expect(screen.getByText('sete reais')).toBeInTheDocument();
+    expect(screen.queryByText(descriptionTag)).not.toBeInTheDocument();
+
+    userEvent.type(inputNumber, '5');
+    userEvent.type(inputDescription, 'cinco reais');
+    userEvent.click(screen.getByRole('button', { name: /Adicionar despesa/i }));
+    expect(await screen.findByText('cinco reais')).toBeInTheDocument();
+
+    userEvent.click(screen.getAllByTestId('edit-btn')[1]);
+
+    userEvent.type(inputNumber, '9');
+    userEvent.type(inputDescription, 'nove reais');
+    userEvent.click(screen.getByText('Editar despesa'));
+
+    expect(screen.getByText('nove reais')).toBeInTheDocument();
+
+    expect(screen.getAllByTestId('edit-btn')).toHaveLength(2);
   });
 });

@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { actionDelete } from '../redux/actions';
+import { actionDelete, actionEditInit } from '../redux/actions';
 
 class Table extends Component {
   deleteTag = (id) => {
     const { dispatch } = this.props;
-    console.log('aqui');
     dispatch(actionDelete(id));
+  };
+
+  editTag = (id) => {
+    const { dispatch } = this.props;
+    dispatch(actionEditInit(id));
   };
 
   render() {
@@ -46,6 +50,12 @@ class Table extends Component {
                   <td>{ convert.toFixed(2) }</td>
                   <td>Real</td>
                   <td>
+                    <button
+                      onClick={ () => this.editTag(id) }
+                      data-testid="edit-btn"
+                    >
+                      Editar
+                    </button>
                     <button
                       onClick={ () => this.deleteTag(id) }
                       data-testid="delete-btn"
