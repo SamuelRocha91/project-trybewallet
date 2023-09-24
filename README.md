@@ -5,8 +5,6 @@
   <li>Redux;</li>
   <li>Lógica de validação de usuário;</li>
   <li>Implementação de tabelas;</li>
-  <li>CRUD - pilares de inserção, atualização e deleção de um dado;</li>
-  <li>Testes com react testing library;</li>
 </ol>
 <p>A aplicação consiste num organizador de despesas. Envolve uma página inicial de login e uma página de controle de carteira. Entre suas funcionalidades está a validação de usuário e senha, bem como a inserção, edição e deleção de gastos, que podem ser descritos e controlados pela tabela</p>
 
