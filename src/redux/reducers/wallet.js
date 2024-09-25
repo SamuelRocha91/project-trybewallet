@@ -1,5 +1,6 @@
 import { SAVE_CURRENCIES,
-  SAVE_EXPENSES, DELETE_TAG, EDIT_TAG, EFETIVE_EDIT } from '../actions';
+  SAVE_EXPENSES, DELETE_TAG, EDIT_TAG, EFETIVE_EDIT,
+  FINISH_EDIT } from '../actions';
 
 const inittialState = {
   currencies: [],
@@ -10,7 +11,7 @@ const inittialState = {
 
 const wallet = (state = inittialState, action) => {
   const newExpenses = state.expenses;
-
+  console.log(action);
   switch (action.type) {
   case SAVE_CURRENCIES:
     return {
@@ -39,6 +40,11 @@ const wallet = (state = inittialState, action) => {
     return {
       ...state,
       expenses: action.payload,
+      editor: false,
+    };
+  case FINISH_EDIT:
+    return {
+      ...state,
       editor: false,
     };
   default: return state;

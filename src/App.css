@@ -29,6 +29,88 @@
   color: #61dafb;
 }
 
+.expense-card {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.expense-card-child {
+  align-items: center;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 10px;
+  width: 70%;
+}
+
+.expense-value {
+  display: flex;
+  gap: 10px;
+}
+
+.expense-value input {
+  border: 1px solid black;
+  border-radius: 5px;
+  text-align: center;
+  width: 100px;
+}
+
+select option {
+  padding: 5px;
+}
+
+.expense-method {
+  align-content: center;
+  align-items: center;
+  display: flex;
+  gap: 3px;
+}
+
+.current {
+  border-radius: 5px;
+  color: green;
+  padding: 5px;
+}
+
+.expense-card-details {
+  align-items: center;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 10px;
+  width: 60%;
+}
+
+.description-expense {
+  display: flex;
+  gap: 5px;
+}
+
+.description-expense input {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 1px;
+  text-align: center;
+
+}
+
+
+.category-expense {
+  display: flex;
+  gap: 5px;
+}
+
+.btn-add-expense {
+  background-color: rgb(8, 122, 13);
+  border: 1px solid white;
+  border-radius: 9px;
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+  margin-top: 10px;
+  padding: 10px;
+}
+
 @keyframes App-logo-spin {
 
   from {

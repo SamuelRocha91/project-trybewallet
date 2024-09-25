@@ -12,7 +12,7 @@ class Wallet extends React.Component {
       >
         <div
           className="bg-white w-4/5 flex flex-col shadow-lg opacity-70
-        items-center justify-center gap-y-5 p-10 rounded-xl gap-y-10"
+        items-center justify-center p-10 rounded-xl gap-y-10"
         >
           <Header />
           <WalletForm />

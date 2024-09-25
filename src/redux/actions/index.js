@@ -4,6 +4,7 @@ export const SAVE_EXPENSES = 'SAVE_EXPENSES';
 export const DELETE_TAG = 'DELETE_TAG';
 export const EDIT_TAG = 'EDIT_TAG';
 export const EFETIVE_EDIT = 'EFETIVE_EDIT';
+export const FINISH_EDIT = 'FINISH_EDIT';
 
 const URL_BASE = 'https://economia.awesomeapi.com.br/json/all';
 
@@ -25,6 +26,10 @@ export const actionEditInit = (id) => ({
 export const actionEfetiveEdit = (object) => ({
   type: EFETIVE_EDIT,
   payload: object,
+});
+
+export const actionUpdateFinish = () => ({
+  type: FINISH_EDIT,
 });
 
 const saveCurrencies = (currencies) => ({
