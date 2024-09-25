@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
+import capital from '../images/capital.png';
 
 class Header extends Component {
   render() {
@@ -11,16 +12,27 @@ class Header extends Component {
       justify-evenly  max-[600px]:text-sm max-[1043px]:flex-wrap
       [1043px]:gap-y-px w-full gap-x-20 max-[382px]:text-xs"
       >
-        <p className="text-green-600">TrybeWallet</p>
-        <p data-testid="email-field">{ `Email: ${email}` }</p>
-        <p data-testid="total-field">
-          Despesa Total: R$
-          {' '}
-          {expenses
-            .reduce((acc, curr) => acc + Number(curr
-              .exchangeRates[curr.currency].ask * curr.value), 0)
-            .toFixed(2)}
-          <span data-testid="header-currency-field">
+        <p className="title-wallet">
+          <img
+            src={ capital }
+            alt="imagem de uma mão com dinheiro"
+          />
+          TrybeWallet
+        </p>
+        <p className="email-wallet">
+          {`Email: ${email}`}
+        </p>
+        <p className="cost-wallet">
+          Despesa Total:
+          <span id="wallet-value">
+            R$
+            {' '}
+            {expenses
+              .reduce((acc, curr) => acc + Number(curr
+                .exchangeRates[curr.currency].ask * curr.value), 0)
+              .toFixed(2).replace('.', ',')}
+          </span>
+          <span className="header-currency-field">
             {' '}
             BRL
           </span>

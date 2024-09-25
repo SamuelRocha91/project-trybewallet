@@ -111,6 +111,40 @@ select option {
   padding: 10px;
 }
 
+.title-wallet {
+  align-items: center;
+  color: rgb(8, 122, 13);
+  display: flex;
+  font-size: x-large;
+  font-weight: 700;
+  gap: 4px;
+}
+
+.title-wallet img {
+  height: 40px;
+  width: 40px;
+}
+
+.email-wallet {
+  font-size: large;
+  font-weight: 700;
+}
+
+.cost-wallet {
+  display: flex;
+  font-weight: 700;
+  gap: 7px;
+}
+
+/* stylelint-disable-next-line selector-max-specificity */
+#wallet-value {
+  color: red;
+}
+
+.header-currency-field {
+  color: green;
+}
+
 @keyframes App-logo-spin {
 
   from {
