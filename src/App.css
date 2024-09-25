@@ -72,7 +72,7 @@ select option {
 
 .current {
   border-radius: 5px;
-  color: green;
+  color: rgb(34, 0, 128);
   padding: 5px;
 }
 

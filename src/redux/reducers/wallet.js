@@ -7,6 +7,7 @@ const inittialState = {
   expenses: [],
   editor: false,
   idToEdit: 0,
+  update: 0,
 };
 
 const wallet = (state = inittialState, action) => {
@@ -34,6 +35,7 @@ const wallet = (state = inittialState, action) => {
     return {
       ...state,
       editor: true,
+      update: 0,
       idToEdit: action.payload,
     };
   case EFETIVE_EDIT:
@@ -45,7 +47,7 @@ const wallet = (state = inittialState, action) => {
   case FINISH_EDIT:
     return {
       ...state,
-      editor: false,
+      update: 1,
     };
   default: return state;
   }

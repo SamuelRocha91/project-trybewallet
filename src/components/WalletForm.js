@@ -9,8 +9,6 @@ import {
 } from '../redux/actions';
 import '../App.css';
 
-const total = 1000;
-
 class WalletForm extends Component {
   state = {
     currency: 'USD',
@@ -26,17 +24,20 @@ class WalletForm extends Component {
   }
 
   componentDidUpdate() {
-    const { idToEdit, expenses, editor, dispatch } = this.props;
-    if (editor) {
+    const { idToEdit, expenses, editor, update, dispatch } = this.props;
+    if (editor && update === 0) {
       const expense = expenses.find((cost) => cost.id === idToEdit);
+      console.log(expense);
+
       this.setState({
         currency: expense.currency,
         value: expense.value,
         description: expense.description,
         method: expense.method,
         tag: expense.tag,
+      }, () => {
+        dispatch(actionUpdateFinish());
       });
-      dispatch(actionUpdateFinish());
     }
   }
 
@@ -49,7 +50,7 @@ class WalletForm extends Component {
     const { dispatch, expenses } = this.props;
     const infos = {
       ...this.state,
-      id: expenses.length + Math.ceil(Math.random() * total),
+      id: expenses.length * Math.random(),
     };
     dispatch(fetchApiExpenses(infos));
     this.setState({ currency: 'USD',
@@ -181,6 +182,7 @@ const mapStateToProps = (state) => ({
   expenses: state.wallet.expenses,
   editor: state.wallet.editor,
   idToEdit: state.wallet.idToEdit,
+  update: state.wallet.update,
 });
 
 WalletForm.propTypes = {
@@ -195,6 +197,7 @@ WalletForm.propTypes = {
   })).isRequired,
   editor: proptypes.bool.isRequired,
   idToEdit: proptypes.number.isRequired,
+  update: proptypes.number.isRequired,
 };
 
 export default connect(mapStateToProps)(WalletForm);
