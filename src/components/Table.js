@@ -18,70 +18,81 @@ class Table extends Component {
     const { expenses } = this.props;
     return (
       <div
-        className="
-      w-auto max-[715px]:overflow-x-auto [715px]:flex [715px]w-10/12"
+        className={ 'w-auto overflow-x-auto max-w-full py-4'
+          + 'px-2 bg-gray-50 rounded-lg shadow-lg' }
       >
         <table
-          className="max-[1264px]:text-sm m-auto
-          table-auto border border-separate max-[560px]:w-6/12
-          max-[1136px]:text-xs  max-[715px]:w-8/12
-        bg-cyan-500 w-10/12  max-[715px]:overflow-x-auto"
+          className={ 'w-full table-auto border-collapse'
+            + 'bg-white rounded-lg shadow-md' }
         >
-          <tr className="w-full">
-            <th className="border p-2">Descrição</th>
-            <th className="border p-2">Tag</th>
-            <th className="border p-2">Método de pagamento</th>
-            <th className="border p-2">Valor</th>
-            <th className="border p-2">Moeda</th>
-            <th className="border p-2">Câmbio utilizado</th>
-            <th className="border p-2">Valor convertido</th>
-            <th className="border p-2">Moeda de conversão</th>
-            <th className="border p-2">Editar/Excluir</th>
-          </tr>
+          <thead>
+            <tr className="bg-gray-100 text-gray-600 uppercase text-sm leading-normal">
+              <th className="border-b p-4 text-left">Descrição</th>
+              <th className="border-b p-4 text-left">Tag</th>
+              <th className="border-b p-4 text-left">Método de pagamento</th>
+              <th className="border-b p-4 text-left">Valor</th>
+              <th className="border-b p-4 text-left">Moeda</th>
+              <th className="border-b p-4 text-left">Câmbio utilizado</th>
+              <th className="border-b p-4 text-left">Valor convertido</th>
+              <th className="border-b p-4 text-left">Moeda de conversão</th>
+              <th className="border-b p-4 text-left">Editar/Excluir</th>
+            </tr>
+          </thead>
           <tbody>
             {expenses.map((expense) => {
-              const { description,
-                value, method, tag, currency, exchangeRates, id } = expense;
+              const {
+                description,
+                value,
+                method,
+                tag,
+                currency,
+                exchangeRates,
+                id,
+              } = expense;
               const { name, ask } = exchangeRates[currency];
               const convert = Number(ask * value);
+
               return (
-                <tr key={ description }>
-                  <td className="border p-2">
-                    {' '}
-                    { description }
+                <tr
+                  key={ description }
+                  className="border-t border-gray-200 text-gray-700 hover:bg-gray-50"
+                >
+                  <td className="p-4 border-b">{description}</td>
+                  <td className="p-4 border-b">{tag}</td>
+                  <td className="p-4 border-b">{method}</td>
+                  <td className="p-4 border-b">
+                    {Number(value).toFixed(2).replace('.', ',')}
                   </td>
-                  <td className="border p-2">{ tag }</td>
-                  <td className="border p-2">{ method }</td>
-                  <td className="border p-2">{ Number(value).toFixed(2) }</td>
-                  <td className="border p-2">{ name }</td>
-                  <td className="border p-2">{ Number(ask).toFixed(2) }</td>
-                  <td className="border p-2">{ convert.toFixed(2) }</td>
-                  <td className="border p-2">Real</td>
-                  <td className="flex flex-col gap-1">
+                  <td className="p-4 border-b">{name}</td>
+                  <td className="p-4 border-b">
+                    {Number(ask).toFixed(2).replace('.', ',')}
+                  </td>
+                  <td className="p-4 border-b">
+                    {convert.toFixed(2).replace('.', ',')}
+                  </td>
+                  <td className="p-4 border-b">Real</td>
+                  <td className="p-4 border-b flex gap-2">
                     <button
-                      className="bg-green-600 p-2 w-full
-                      text-white rounded-lg shadow-lg hover:opacity-70"
+                      className={ 'bg-green-500 text-white px-3 py-1'
+                        + 'rounded-lg shadow-md hover:bg-green-400 transition' }
                       onClick={ () => this.editTag(id) }
                       data-testid="edit-btn"
                     >
                       Editar
                     </button>
                     <button
+                      className={ 'bg-red-500 text-white px-3 py-1 rounded-lg'
+                        + ' shadow-md hover:bg-red-400 transition' }
                       onClick={ () => this.deleteTag(id) }
                       data-testid="delete-btn"
-                      className="bg-red-600 p-2 w-full text-white rounded-lg shadow-lg
-                      hover:opacity-70"
-
                     >
                       Excluir
                     </button>
-
                   </td>
                 </tr>
               );
             })}
           </tbody>
-
         </table>
       </div>
     );

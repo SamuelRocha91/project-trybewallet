@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import proptypes from 'prop-types';
-import { fetchApiCurrencies,
-  fetchApiExpenses, actionEfetiveEdit } from '../redux/actions';
+import {
+  fetchApiCurrencies,
+  fetchApiExpenses,
+  actionEfetiveEdit,
+  actionUpdateFinish,
+} from '../redux/actions';
+import '../App.css';
 
 class WalletForm extends Component {
   state = {
@@ -11,7 +16,6 @@ class WalletForm extends Component {
     description: '',
     method: 'Dinheiro',
     tag: 'Alimentacao',
-    update: 0,
   };
 
   componentDidMount() {
@@ -20,16 +24,19 @@ class WalletForm extends Component {
   }
 
   componentDidUpdate() {
-    const { idToEdit, expenses, editor } = this.props;
-    const { update } = this.state;
+    const { idToEdit, expenses, editor, update, dispatch } = this.props;
     if (editor && update === 0) {
+      const expense = expenses.find((cost) => cost.id === idToEdit);
+      console.log(expense);
+
       this.setState({
-        currency: expenses[idToEdit].currency,
-        value: expenses[idToEdit].value,
-        description: expenses[idToEdit].description,
-        method: expenses[idToEdit].method,
-        tag: expenses[idToEdit].tag,
-        update: 1,
+        currency: expense.currency,
+        value: expense.value,
+        description: expense.description,
+        method: expense.method,
+        tag: expense.tag,
+      }, () => {
+        dispatch(actionUpdateFinish());
       });
     }
   }
@@ -51,7 +58,7 @@ class WalletForm extends Component {
       description: '',
       method: 'Dinheiro',
       tag: 'Alimentacao',
-      update: 0 });
+    });
   };
 
   editTag = () => {
@@ -71,6 +78,7 @@ class WalletForm extends Component {
       }
       return expense;
     });
+
     dispatch(actionEfetiveEdit(filteredData));
     this.setState({ currency: 'USD',
       value: '',
@@ -83,34 +91,24 @@ class WalletForm extends Component {
     const { currencies, editor } = this.props;
     const { currency, description, value, method, tag } = this.state;
     return (
-      <div
-        className="flex flex-col gap-y-7 gap-x-2 text-sky-600
-      max-[800px]:text-sm max-[720px]:text-xs flex-wrap"
-      >
-        <div
-          className="flex gap-x-14 justify-center flex-wrap
-         max-[948px]:gap-y-5"
-        >
-          <label className="flex gap-x-2 w-1/6 self-center" htmlFor="value">
+      <div className="expense-card">
+        <div className="expense-card-child">
+          <label className="expense-value" htmlFor="value">
             Valor:
             <input
-              className="border border-cyan-600 w-full
-              p-1  max-[8000px]:w-14 max-[795px]:p-1"
               name="value"
               value={ value }
               onChange={ this.handleChange }
-              data-testid="value-input"
               min="0"
               type="number"
               id="value"
             />
           </label>
-          <label className="flex gap-x-2" htmlFor="current">
+          <label htmlFor="current" className="expense-currency">
             Moeda:
             <select
-              className="p-0.5"
-              data-testid="currency-input"
               name="currency"
+              className="current"
               id="current"
               onChange={ this.handleChange }
               value={ currency }
@@ -124,13 +122,12 @@ class WalletForm extends Component {
                 </option>))}
             </select>
           </label>
-          <section className="flex gap-x-2 max-[490px]:gap-x-1">
+          <section className="expense-method">
             <p>Método de pagamento:</p>
             <select
-              className="p-0.5"
-              data-testid="method-input"
               name="method"
               id="methodPayment"
+              className="current"
               value={ method }
               onChange={ this.handleChange }
             >
@@ -140,19 +137,15 @@ class WalletForm extends Component {
             </select>
           </section>
         </div>
-        <div
-          className="flex justify-center items-center gap-x-7
-        flex-wrap max-[1010px]:gap-y-5"
-        >
-          <section className="flex gap-x-2">
+        <div className="expense-card-details">
+          <section className="category-expense">
             <p> Categoria de despesa:</p>
             <select
-              className="p-0.5"
-              data-testid="tag-input"
               name="tag"
               id="tag"
               value={ tag }
               onChange={ this.handleChange }
+              className="current"
             >
               <option value="Alimentação">Alimentação</option>
               <option value="Lazer">Lazer</option>
@@ -161,11 +154,9 @@ class WalletForm extends Component {
               <option value="Saúde">Saúde</option>
             </select>
           </section>
-          <label className="flex gap-x-2" htmlFor="description">
+          <label htmlFor="description" className="description-expense">
             Descrição da despesa:
             <input
-              className="border border-cyan-600 max-[795px]:p-1"
-              data-testid="description-input"
               type="text"
               id="description"
               name="description"
@@ -175,8 +166,8 @@ class WalletForm extends Component {
           </label>
         </div>
         <button
+          className="btn-add-expense"
           onClick={ editor ? this.editTag : this.saveTag }
-          className="bg-green-600 p-2 w-full text-white rounded-lg shadow-lg "
         >
           {editor ? 'Editar despesa' : 'Adicionar despesa' }
         </button>
@@ -191,6 +182,7 @@ const mapStateToProps = (state) => ({
   expenses: state.wallet.expenses,
   editor: state.wallet.editor,
   idToEdit: state.wallet.idToEdit,
+  update: state.wallet.update,
 });
 
 WalletForm.propTypes = {
@@ -205,6 +197,7 @@ WalletForm.propTypes = {
   })).isRequired,
   editor: proptypes.bool.isRequired,
   idToEdit: proptypes.number.isRequired,
+  update: proptypes.number.isRequired,
 };
 
 export default connect(mapStateToProps)(WalletForm);

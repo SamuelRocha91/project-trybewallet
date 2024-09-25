@@ -29,6 +29,125 @@
   color: #61dafb;
 }
 
+.expense-card {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  font-size: large;
+  font-weight: 500;
+  gap: 25px;
+  width: 100%;
+}
+
+.expense-card-child {
+  align-items: center;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 10px;
+  width: 70%;
+}
+
+.expense-value {
+  display: flex;
+  gap: 10px;
+}
+
+.expense-value input {
+  border: 1px solid black;
+  border-radius: 5px;
+  text-align: center;
+  width: 100px;
+}
+
+select option {
+  padding: 5px;
+}
+
+.expense-method {
+  align-content: center;
+  align-items: center;
+  display: flex;
+  gap: 10px;
+}
+
+.current {
+  border-radius: 5px;
+  color: rgb(34, 0, 128);
+  padding: 5px;
+}
+
+.expense-card-details {
+  align-items: center;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 10px;
+  width: 80%;
+}
+
+.description-expense {
+  display: flex;
+  gap: 5px;
+}
+
+.description-expense input {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 1px;
+  text-align: center;
+
+}
+
+
+.category-expense {
+  display: flex;
+  gap: 5px;
+}
+
+.btn-add-expense {
+  background-color: rgb(8, 122, 13);
+  border: 1px solid white;
+  border-radius: 9px;
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+  margin-top: 10px;
+  padding: 10px;
+}
+
+.title-wallet {
+  align-items: center;
+  color: rgb(8, 122, 13);
+  display: flex;
+  font-size: x-large;
+  font-weight: 700;
+  gap: 4px;
+}
+
+.title-wallet img {
+  height: 40px;
+  width: 40px;
+}
+
+.email-wallet {
+  font-size: large;
+  font-weight: 700;
+}
+
+.cost-wallet {
+  display: flex;
+  font-weight: 700;
+  gap: 7px;
+}
+
+/* stylelint-disable-next-line selector-max-specificity */
+#wallet-value {
+  color: red;
+}
+
+.header-currency-field {
+  color: green;
+}
+
 @keyframes App-logo-spin {
 
   from {
