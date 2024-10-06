@@ -1,121 +1,132 @@
-# <img src="https://agenciars.com.br/wp-content/uploads/2022/06/Trybe.png" alt="Trybe Logo" width="52" height="30" /> Проект TrybeWallet <img src="https://agenciars.com.br/wp-content/uploads/2022/06/Trybe.png" alt="Trybe Logo" width="52" height="30" />
+# <img src="https://cdn-icons-png.flaticon.com/128/10832/10832132.png" alt="Trybe Logo" width="42" height="30" /> Проект TrybeWallet <img src="https://cdn-icons-png.flaticon.com/128/10832/10832132.png" alt="Trybe Logo" width="42" height="30" />
 
-## 🌐 [![Português](https://img.shields.io/badge/Português-green)](https://github.com/SamuelRocha91/project-trybewallet/blob/main/README.md) [![Español](https://img.shields.io/badge/Español-yellow)](https://github.com/SamuelRocha91/project-trybewallet/blob/main/README_es.md) [![English](https://img.shields.io/badge/English-blue)](https://github.com/SamuelRocha91/project-trybewallet/blob/main/README_en.md) [![Русский](https://img.shields.io/badge/Русский-lightgrey)](https://github.com/SamuelRocha91/project-trybewallet/blob/main/README_ru.md) [![中文](https://img.shields.io/badge/中文-red)](https://github.com/SamuelRocha91/project-trybewallet/blob/main/README_ch.md) [![العربية](https://img.shields.io/badge/العربية-orange)](https://github.com/SamuelRocha91/project-trybewallet/blob/main/README_ar.md)
+## 🌐 [![Португальский](https://img.shields.io/badge/Português-green)](https://github.com/SamuelRocha91/project-trybewallet/blob/main/README.md) [![Испанский](https://img.shields.io/badge/Español-yellow)](https://github.com/SamuelRocha91/project-trybewallet/blob/main/README_es.md) [![Английский](https://img.shields.io/badge/English-blue)](https://github.com/SamuelRocha91/project-trybewallet/blob/main/README_en.md) [![Русский](https://img.shields.io/badge/Русский-lightgrey)](https://github.com/SamuelRocha91/project-trybewallet/blob/main/README_ru.md) [![中文](https://img.shields.io/badge/中文-red)](https://github.com/SamuelRocha91/project-trybewallet/blob/main/README_ch.md) [![العربية](https://img.shields.io/badge/العربية-orange)](https://github.com/SamuelRocha91/project-trybewallet/blob/main/README_ar.md)
 
 ![Предварительный просмотр приложения](./public/wallet.gif)
 
-Этот проект был разработан в рамках фронтенд-модуля курса веб-разработки Trybe. Это органайзер для управления расходами, который позволяет пользователям контролировать свои финансы через интерфейс с проверкой логина и управлением финансовыми данными.
+<details>
+  <summary><h2>📖 Описание</h2></summary>
 
-## Описание
+  Этот проект был разработан в рамках модуля Frontend курса веб-разработки в Trybe. Это организатор расходов, который позволяет пользователю контролировать свои расходы через интерфейс с проверкой входа и манипуляцией финансовыми данными.
 
-Приложение представляет собой платформу для управления личными расходами и включает в себя следующие основные функции:
-- Страница входа с проверкой имени пользователя и пароля.
-- Страница кошелька, где пользователь может добавлять, редактировать и удалять расходы.
-- Таблица расходов, отображающая данные по каждому зарегистрированному расходу.
-- Полный функционал CRUD (создание, чтение, обновление, удаление) для управления расходами.
+  Приложение представляет собой платформу для управления личными расходами. Оно включает в себя следующие основные функции:
+  - Страница входа с проверкой пользователя и пароля.
+  - Страница управления кошельком, где пользователь может добавлять, редактировать и удалять расходы.
+  - Таблица расходов, отображающая данные о каждой зарегистрированной покупке.
+  - Полная поддержка CRUD (Создать, Читать, Обновить, Удалить) для управления расходами.
 
-Целью проекта было развить навыки работы с маршрутами, управления состоянием с использованием Redux, жизненным циклом компонентов, интеграции форм и реализации тестов с использованием библиотеки React Testing Library.
+  Основное внимание в проекте было уделено развитию навыков манипуляции маршрутами, управления состоянием с Redux, жизненного цикла компонентов, интеграции форм и реализации тестов с использованием библиотеки React Testing Library.
+</details>
 
-## Используемые технологии
+<details>
+  <summary><h2>🛠️ Используемые технологии</h2></summary>
 
-- **React.js** - для создания пользовательского интерфейса.
-- **Redux** - для глобального управления состоянием.
-- **JavaScript** - язык программирования.
-- **CSS/HTML** - для оформления и структуры приложения.
-- **React Testing Library** - для написания модульных тестов.
-- **Docker** - для контейнеризации приложения.
+  - **React.js** - для построения пользовательского интерфейса.
+  - **Redux** - для управления глобальным состоянием.
+  - **JavaScript** - язык программирования.
+  - **CSS/HTML** - стилизация и структура приложения.
+  - **React Testing Library** - для юнит-тестирования.
+  - **Docker** - для контейнеризации приложения.
+</details>
 
-## Основные функции
+<details>
+  <summary><h2>⭐ Основные функции</h2></summary>
 
-- **Работа с маршрутами**: использование React Router для навигации между страницами входа и управления кошельком.
-- **Redux**: централизованное управление состоянием приложения, включая расходы.
-- **Проверка пользователя**: логика для проверки входа (имя пользователя и пароль).
-- **Таблица расходов**: добавление, редактирование и удаление расходов, отображаемых в динамической таблице.
-- **Тесты**: реализация тестов с использованием библиотеки `React Testing Library`.
+  - **Манипуляция маршрутами**: Использование React Router для навигации между страницами входа и управления кошельком.
+  - **Redux**: Централизованное управление состоянием приложения, включая расходы.
+  - **Проверка пользователя**: Логика проверки для входа в систему (пользователь и пароль).
+  - **Таблица расходов**: Вставка, редактирование и удаление расходов, отображаемых в динамической таблице.
+  - **Тестирование**: Реализация тестов с использованием библиотеки `React Testing Library`.
+</details>
 
-## Структура приложения
+<details>
+  <summary><h2>📂 Структура приложения</h2></summary>
 
-Приложение делится на две основные страницы:
+  Приложение делится на две основные страницы:
 
-1. **Страница входа**: пользователь вводит свои учетные данные для входа.
-2. **Кошелек**: пользователь может управлять своими расходами.
+  1. **Вход в систему**: Где пользователь аутентифицируется.
+  2. **Кошелек**: Где пользователь может управлять своими расходами.
 
-Таблица расходов отображает подробную информацию о каждом расходе, включая описание, сумму, способ оплаты, валюту и другие детали.
+  Таблица расходов показывает подробную информацию, такую как описание расхода, сумма, способ оплаты, конверсия валюты и т. д.
+</details>
 
-## Инструкции по запуску
+<details>
+  <summary><h2>🚀 Инструкции по запуску</h2></summary>
 
-Приложение можно легко запустить с помощью **Docker**. Следуйте инструкциям ниже, чтобы запустить его в вашем локальном окружении.
+  Приложение можно легко запустить с помощью **Docker**. Следуйте приведенным ниже шагам, чтобы запустить его в локальной среде.
 
-### Необходимые условия
+  ### Предварительные требования
 
-- На вашем компьютере должен быть установлен **Docker**.
+  - **Docker** должен быть установлен на вашем компьютере.
 
-### Шаги для запуска:
+  ### Шаги для запуска:
 
-1. Клонируйте этот репозиторий:
-   ```bash
-   git clone https://github.com/your-username/repository-name.git
-   ```
+  1. Клонируйте этот репозиторий:
+     ```bash
+     git clone git@github.com:SamuelRocha91/project-trybewallet.git
+     ```
 
-2. Перейдите в папку с проектом:
-   ```bash
-   cd repository-name
-   ```
+  2. Перейдите в папку проекта:
+     ```bash
+     cd имя-репозитория
+     ```
 
-3. Соберите Docker-образ:
-   ```bash
-   docker build -t react_store .
-   ```
+  3. Постройте образ Docker:
+     ```bash
+     docker build -t react_store .
+     ```
 
-4. Запустите контейнер:
-   ```bash
-   docker run -d --name react -p 3000:3000 react_store
-   ```
+  4. Запустите контейнер:
+     ```bash
+     docker run -d --name react -p 3000:3000 react_store
+     ```
 
-5. Откройте приложение в браузере:
-   ```
-   http://localhost:3000
-   ```
+  5. Откройте приложение в браузере:
+     ```
+     http://localhost:3000
+     ```
+</details>
 
-## Структура проекта
+<details>
+  <summary><h2>📁 Структура проекта</h2></summary>
 
-```bash
-.
-├── src
-│   ├── components
-│   ├── pages
-│   ├── store
-│   ├── App.js
-│   ├── index.js
-│   └── ...
-├── public
-├── Dockerfile
-├── package.json
-└── README.md
-```
+  ```bash
+  .
+  ├── src
+  │   ├── components
+  │   ├── pages
+  │   ├── store
+  │   ├── App.js
+  │   ├── index.js
+  │   └── ...
+  ├── public
+  ├── Dockerfile
+  ├── package.json
+  └── README.md
+  ```
 
-### Основные компоненты
+  ### Основные компоненты
 
-- **Header**: отображает заголовок приложения.
-- **WalletForm**: форма для добавления новых расходов.
-- **Table**: таблица расходов с возможностью редактирования и удаления данных.
+  - **Header**: Отображает заголовок приложения.
+  - **WalletForm**: Форма для добавления новых расходов.
+  - **Table**: Таблица расходов с возможностями редактирования и удаления.
+</details>
 
-## Тестирование
+<details>
+  <summary><h2>🧪 Тестирование</h2></summary>
 
-Тесты были реализованы с использованием **React Testing Library**. Чтобы запустить тесты:
+  Тесты были реализованы с использованием **React Testing Library**. Чтобы запустить тесты:
 
-```bash
-npm test
-```
+  ```bash
+  npm test
+  ```
+</details>
 
-## Другие проекты
+<details>
+  <summary><h2>🔗 Другие проекты</h2></summary>
 
-- ⚽ [Typescript FootBall API](https://github.com/SamuelRocha91/trybeFutebolClube/blob/main/README_ru.md)
-- 🐉 [Trybers and Dragons](https://github.com/SamuelRocha91/trybeAndDragons/blob/main/README_ru.md)
-- 🌶️ [Recipes App](https://github.com/SamuelRocha91/ProjectRecipesApp/blob/main/README_ru.md)
-- 🎮 [Trivia](https://github.com/SamuelRocha91/trivia_game/blob/main/README_ru.md)
-- 🪧 [Blogs Api](https://github.com/SamuelRocha91/BlogsApi/blob/main/README_ru.md)
-- 🗡️ [Trybe Smith](https://github.com/SamuelRocha91/TrybeSmith/blob/main/README_ru.md)
-- 🐣 [Pokedex](https://github.com/SamuelRocha91/pokedex/blob/main/README_ru.md)
-- 🏪 [FrontEnd Online Store](https://github.com/SamuelRocha91/project-frontend-online-store/blob/main/README_ru.md) 
-
+  - 🌶️ [Recipes App](https://github.com/SamuelRocha91/project-trybewallet/blob/main/README_ru.md)
+  - 🎮 [Trivia](https://github.com/SamuelRocha91/trivia_game/blob/main/README_ru.md)
+  - 🐣 [Pokedex](https://github.com/SamuelRocha91/pokedex/blob/main/README_ru.md)
+  - 🏪 [FrontEnd Online Store](https://github.com/SamuelRocha91/project-frontend-online-store/blob/main/README_ru.md)
+</details>
