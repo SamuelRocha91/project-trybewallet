@@ -1,121 +1,132 @@
-# <img src="https://agenciars.com.br/wp-content/uploads/2022/06/Trybe.png" alt="Trybe Logo" width="52" height="30" /> TrybeWallet 项目 <img src="https://agenciars.com.br/wp-content/uploads/2022/06/Trybe.png" alt="Trybe Logo" width="52" height="30" />
+# <img src="https://cdn-icons-png.flaticon.com/128/10832/10832132.png" alt="Trybe Logo" width="42" height="30" /> TrybeWallet 项目 <img src="https://cdn-icons-png.flaticon.com/128/10832/10832132.png" alt="Trybe Logo" width="42" height="30" />
 
 ## 🌐 [![葡萄牙语](https://img.shields.io/badge/Português-green)](https://github.com/SamuelRocha91/project-trybewallet/blob/main/README.md) [![西班牙语](https://img.shields.io/badge/Español-yellow)](https://github.com/SamuelRocha91/project-trybewallet/blob/main/README_es.md) [![英语](https://img.shields.io/badge/English-blue)](https://github.com/SamuelRocha91/project-trybewallet/blob/main/README_en.md) [![俄语](https://img.shields.io/badge/Русский-lightgrey)](https://github.com/SamuelRocha91/project-trybewallet/blob/main/README_ru.md) [![中文](https://img.shields.io/badge/中文-red)](https://github.com/SamuelRocha91/project-trybewallet/blob/main/README_ch.md) [![阿拉伯语](https://img.shields.io/badge/العربية-orange)](https://github.com/SamuelRocha91/project-trybewallet/blob/main/README_ar.md)
 
-![应用程序预览](./public/wallet.gif)
+![应用预览](./public/wallet.gif)
 
-该项目是作为 Trybe 网页开发课程前端模块的一部分而开发的，旨在为用户提供一个管理财务的应用程序，用户可以通过登录界面管理自己的财务数据。
+<details>
+  <summary><h2>📖 描述</h2></summary>
 
-## 描述
+  此项目是 Trybe 网页开发课程中前端模块的一部分。它是一个费用管理器，允许用户通过一个具有用户登录验证和财务数据操作的界面来控制自己的支出。
 
-该应用程序是一个个人开支管理平台，主要功能包括：
-- 登录页面，验证用户名和密码。
-- 钱包页面，用户可以添加、编辑和删除开支。
-- 开支表格，展示所有注册开支的详细信息。
-- 完整的 CRUD 功能（创建、读取、更新、删除）以管理开支。
+  该应用程序是一个管理个人支出的平台。它包含以下主要功能：
+  - 带有用户和密码验证的登录页面。
+  - 钱包管理页面，用户可以添加、编辑和删除支出。
+  - 显示每笔注册购买数据的支出表格。
+  - 完全支持 CRUD（创建、读取、更新、删除）以管理支出。
 
-该项目的目标是提升开发者在路由、状态管理（使用 Redux）、组件生命周期、表单集成和使用 React Testing Library 进行测试等方面的技能。
+  项目的主要关注点是开发路由操作、Redux 状态管理、组件生命周期、表单集成和使用 React 测试库实现测试的技能。
+</details>
 
-## 使用的技术
+<details>
+  <summary><h2>🛠️ 使用的技术</h2></summary>
 
-- **React.js** - 用于构建用户界面。
-- **Redux** - 用于全局状态管理。
-- **JavaScript** - 编程语言。
-- **CSS/HTML** - 用于应用程序的格式和结构。
-- **React Testing Library** - 用于编写单元测试。
-- **Docker** - 用于在容器中运行应用程序。
+  - **React.js** - 用于构建用户界面。
+  - **Redux** - 用于管理全局状态。
+  - **JavaScript** - 编程语言。
+  - **CSS/HTML** - 应用程序的样式和结构。
+  - **React 测试库** - 用于单元测试。
+  - **Docker** - 用于容器化应用程序。
+</details>
 
-## 主要特点
+<details>
+  <summary><h2>⭐ 主要功能</h2></summary>
 
-- **路由功能**：使用 React Router 实现登录页面和钱包管理页面之间的导航。
-- **Redux**：集中管理应用程序状态，包括开支数据。
-- **用户验证**：实现登录验证逻辑（用户名和密码）。
-- **开支表格**：动态显示开支的详细信息，支持添加、编辑和删除。
-- **测试**：使用 `React Testing Library` 进行测试实现。
+  - **路由操作**：使用 React Router 在登录页面和钱包管理页面之间导航。
+  - **Redux**：集中管理应用程序状态，包括支出。
+  - **用户验证**：登录系统的验证逻辑（用户名和密码）。
+  - **支出表格**：插入、编辑和删除支出，动态表格中显示。
+  - **测试**：使用 `React 测试库` 实现测试。
+</details>
 
-## 应用结构
+<details>
+  <summary><h2>📂 应用程序结构</h2></summary>
 
-应用分为两个主要页面：
+  应用程序分为两个主要页面：
 
-1. **登录页面**：用户在此输入凭据进行登录。
-2. **钱包**：用户在此管理自己的开支。
+  1. **登录**：用户进行身份验证。
+  2. **钱包**：用户可以管理他们的支出。
 
-开支表格展示了每一笔开支的详细信息，包括描述、金额、支付方式、货币等。
+  支出表格显示详细信息，如支出描述、金额、支付方式、货币转换等。
+</details>
 
-## 运行说明
+<details>
+  <summary><h2>🚀 启动说明</h2></summary>
 
-可以使用 **Docker** 轻松运行该应用。请按照以下说明在本地环境中运行。
+  可以使用 **Docker** 简单启动该应用程序。按照以下步骤在本地环境中启动。
 
-### 先决条件
+  ### 前提条件
 
-- 需要在计算机上安装 **Docker**。
+  - 必须在计算机上安装 **Docker**。
 
-### 运行步骤：
+  ### 启动步骤：
 
-1. 克隆此代码库：
-   ```bash
-   git clone https://github.com/your-username/repository-name.git
-   ```
+  1. 克隆此存储库：
+     ```bash
+     git clone git@github.com:SamuelRocha91/project-trybewallet.git
+     ```
 
-2. 进入项目文件夹：
-   ```bash
-   cd repository-name
-   ```
+  2. 进入项目文件夹：
+     ```bash
+     cd 项目名
+     ```
 
-3. 构建 Docker 镜像：
-   ```bash
-   docker build -t react_store .
-   ```
+  3. 构建 Docker 镜像：
+     ```bash
+     docker build -t react_store .
+     ```
 
-4. 运行容器：
-   ```bash
-   docker run -d --name react -p 3000:3000 react_store
-   ```
+  4. 运行容器：
+     ```bash
+     docker run -d --name react -p 3000:3000 react_store
+     ```
 
-5. 在浏览器中打开应用：
-   ```
-   http://localhost:3000
-   ```
+  5. 在浏览器中打开应用程序：
+     ```
+     http://localhost:3000
+     ```
+</details>
 
-## 项目结构
+<details>
+  <summary><h2>📁 项目结构</h2></summary>
 
-```bash
-.
-├── src
-│   ├── components
-│   ├── pages
-│   ├── store
-│   ├── App.js
-│   ├── index.js
-│   └── ...
-├── public
-├── Dockerfile
-├── package.json
-└── README.md
-```
+  ```bash
+  .
+  ├── src
+  │   ├── components
+  │   ├── pages
+  │   ├── store
+  │   ├── App.js
+  │   ├── index.js
+  │   └── ...
+  ├── public
+  ├── Dockerfile
+  ├── package.json
+  └── README.md
+  ```
 
-### 主要组件
+  ### 主要组件
 
-- **Header**: 显示应用程序的标题。
-- **WalletForm**: 用于添加新开支的表单。
-- **Table**: 显示开支的表格，支持数据的编辑和删除。
+  - **Header**: 显示应用程序标题。
+  - **WalletForm**: 添加新支出的表单。
+  - **Table**: 显示支出，并提供编辑和删除功能。
+</details>
 
-## 测试
+<details>
+  <summary><h2>🧪 测试</h2></summary>
 
-使用 **React Testing Library** 执行测试。要运行测试，请执行：
+  使用 **React 测试库** 实现了测试。要运行测试：
 
-```bash
-npm test
-```
+  ```bash
+  npm test
+  ```
+</details>
 
-## 其他项目
+<details>
+  <summary><h2>🔗 其他项目</h2></summary>
 
-- ⚽ [Typescript FootBall API](https://github.com/SamuelRocha91/trybeFutebolClube/blob/main/README_ch.md)
-- 🐉 [Trybers and Dragons](https://github.com/SamuelRocha91/trybeAndDragons/blob/main/README_ch.md)
-- 🌶️ [Recipes App](https://github.com/SamuelRocha91/ProjectRecipesApp/blob/main/README_ch.md)
-- 🎮 [Trivia](https://github.com/SamuelRocha91/trivia_game/blob/main/README_ch.md)
-- 🪧 [Blogs Api](https://github.com/SamuelRocha91/BlogsApi/blob/main/README_ch.md)
-- 🗡️ [Trybe Smith](https://github.com/SamuelRocha91/TrybeSmith/blob/main/README_ch.md)
-- 🐣 [Pokedex](https://github.com/SamuelRocha91/pokedex/blob/main/README_ch.md)
-- 🏪 [FrontEnd Online Store](https://github.com/SamuelRocha91/project-frontend-online-store/blob/main/README_ch.md) 
-
+  - 🌶️ [Recipes App](https://github.com/SamuelRocha91/project-trybewallet/blob/main/README_ch.md)
+  - 🎮 [Trivia](https://github.com/SamuelRocha91/trivia_game/blob/main/README_ch.md)
+  - 🐣 [Pokedex](https://github.com/SamuelRocha91/pokedex/blob/main/README_ch.md)
+  - 🏪 [前端在线商店](https://github.com/SamuelRocha91/project-frontend-online-store/blob/main/README_ch.md)
+</details>
